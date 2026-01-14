@@ -111,7 +111,7 @@ const formatDuration = (start: string, end: string) => {
 };
 
 // Meetings tool registration.
-export const registerMeetingsTool = (server: McpServer): void {
+export const registerMeetingsTool = (server: McpServer): void => {
   server.registerTool(
     "fathom_list_meetings",
     {
