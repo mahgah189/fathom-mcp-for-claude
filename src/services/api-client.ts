@@ -42,7 +42,7 @@ export type ErrorHandler = (args: {
   method: "GET" | "POST" | "DELETE";
 }) => Promise<never>;
 
-/** Checks to see if error is in json format before returning error. */
+// Checks to see if error is in json format before returning error.
 export const handleApiError = async (response: Response): Promise<string> => {
   const contentType = response.headers.get("content-type") ?? "";
 
@@ -73,7 +73,7 @@ export const handleApiError = async (response: Response): Promise<string> => {
   }
 };
 
-/** You can use a different error handler by defining one first. */ 
+// The default error handler can also be inserted by defining another one first.
 export const defaultErrorHandler: ErrorHandler = async ({
   response,
   endpoint,
