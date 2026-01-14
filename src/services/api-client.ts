@@ -90,8 +90,8 @@ export const defaultErrorHandler: ErrorHandler = async ({
 // Handle GET requests.
 export const apiGet = async <T>(
   endpoint: string,
-  onError: ErrorHandler = defaultErrorHandler,
   params?: Record<string, unknown>,
+  onError: ErrorHandler = defaultErrorHandler,
 ): Promise<T> => {
   const url = buildUrl(endpoint, params);
 
@@ -112,8 +112,8 @@ export const apiGet = async <T>(
 // Handle POST requests. Only used for Fathom webhooks. 
 export const apiPost = async <T>(
   endpoint: string,
-  onError: ErrorHandler = defaultErrorHandler,
   params?: Record<string, unknown>,
+  onError: ErrorHandler = defaultErrorHandler,
 ): Promise<T> => {
   const url = buildUrl(endpoint, params);
 
@@ -159,7 +159,6 @@ export const apiPost = async <T>(
 // Handle DELETE requests. Only used for Fathom webhooks.
 export const apiDelete = async (
   endpoint: string,
-  apiKey: string,
   onError: ErrorHandler = defaultErrorHandler
 ): Promise<void> => {
   const url = buildUrl(endpoint);

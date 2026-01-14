@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { ResponseFormat } from "../constants.js";
 
-/** Schemas for meetings tool. The analytics tool allows the LLM to parse through data returned by the "/meetings" endpoint.
+/** Schemas for analytics tool. The analytics tool allows the LLM to parse through data returned by the "/meetings" endpoint.
  * 
  * Schemas act as a source of truth for the MCP, defining valid inputs for tools. This puts guardrails around how the LLM uses tools
  * and enable errors for invalid calls & inputs. Zod also enables actionable error feedback for LLMs. */ 

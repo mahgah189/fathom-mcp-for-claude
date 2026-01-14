@@ -181,7 +181,7 @@ export const registerMeetingsTool = (server: McpServer): void {
         if (params.recorded_by?.length) queryParams.recorded_by = params.recorded_by;
         if (params.teams?.length) queryParams.teams = params.teams;
 
-        const response = await apiGet<MeetingsResponse>("/meetings", undefined, queryParams);
+        const response = await apiGet<MeetingsResponse>("/meetings", queryParams);
 
         const includeDetails = params.include_summary 
           || params.include_transcript 
@@ -198,7 +198,7 @@ export const registerMeetingsTool = (server: McpServer): void {
             title: m.title,
             created_at: m.created_at,
             duration_minutes: Math.round(
-              (new Date(m.recording_end_time).getTime() - new Date(m.recording_start_time).getTime() / 60000)
+              (new Date(m.recording_end_time).getTime() - new Date(m.recording_start_time).getTime()) / 60000
             ),
             recorded_by: m.recorded_by,
             participants_count: m.calendar_invitees.length,
@@ -222,7 +222,7 @@ export const registerMeetingsTool = (server: McpServer): void {
             "",
             `Found ${response.items.length} meetings${response.next_cursor ? " (more available)" : ""}`,
             ""
-          ],
+          ];
 
           for (const meeting of response.items) {
             lines.push(formatMeetingMarkdown(meeting, includeDetails));
@@ -242,7 +242,7 @@ export const registerMeetingsTool = (server: McpServer): void {
           const truncatedOutput = {
             ...output,
             meetings: output.meetings.slice(0, Math.ceil(output.meetings.length / 2)),
-            trunacted: true,
+            truncated: true,
             truncation_message: "Response truncated. Use cursor-based pagination or add filters to see more results."
           };
           if (params.response_format === ResponseFormat.JSON) {
