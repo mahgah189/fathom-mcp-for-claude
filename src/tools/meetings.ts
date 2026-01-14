@@ -109,3 +109,64 @@ const formatDuration = (start: string, end: string) => {
     return `${hours}h ${remainingMinutes}m`;
   }
 };
+
+// Meetings tool registration.
+export const registerMeetingsTool = (server: McpServer): void {
+  server.registerTool(
+    "fathom_list_meetings",
+    {
+      title: "List Fathom Meetings",
+      description: `List meetings from Fathom with optional filtering and pagination.
+      
+      This tool retrieves meeting details & recordings from your Fathom account. Meetings can be filtered by:
+      - Company domains of calendar invitees.
+      - Internal vs. external meetings.
+      - Date range (created_after/created_before).
+      - Email addresses of recorder.
+      - Team names.
+      
+      You can optionally include:
+      - AI-generated summaries.
+      - Full transcripts.
+      - Action items.
+      - CRM matches.
+      
+      Args: 
+        - calendar_invitees_domains (string[]): Filter by company domains
+        - calendar_invitees_domains_type ('all'|'only_internal'|'one_or_more_external'): Filter by meeting type
+        - created_after (string): ISO 8601 timestamp to filter meetings after
+        - created_before (string): ISO 8601 timestamp to filter meetings before
+        - cursor (string): Pagination cursor from previous response
+        - include_action_items (boolean): Include action items (default: false)
+        - include_crm_matches (boolean): Include CRM matches (default: false)
+        - include_summary (boolean): Include summaries (default: false)
+        - include_transcript (boolean): Include transcripts (default: false)
+        - recorded_by (string[]): Filter by recorder emails
+        - teams (string[]): Filter by team names
+        - response_format ('markdown'|'json'): Output format (default: 'markdown')
+        
+      Returns:
+        - Paginated list of meetings with requested details included.
+        
+      Examples:
+        - List recent meetings: {}
+        - External meetings only: { calendar_invitees_domains_type: 'one_or_more_external' }
+        - With summaries: { include_summary: true }
+        - Filter by team: { teams: ['Sales'] }`,
+      inputSchema: ListMeetingsInputSchema,
+      annotations: {
+        readOnlyHint: true,
+        destructiveHint: false,
+        idempotentHint: true,
+        openWorldHint: true
+      }
+    },
+    async (params: ListMeetingsInput) => {
+      try {
+        const queryParams: Record<string, unknown> = {};
+
+        
+      }
+    }
+  )
+}
