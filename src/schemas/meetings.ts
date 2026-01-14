@@ -27,7 +27,7 @@ export const ListMeetingsInputSchema = z.object({
   
   cursor: z.string()
     .optional()
-    .describe("Cursor used as reference when results are paginated, e.g. next_cursor is next page of results."),
+    .describe("Cursor is used as reference when results are paginated, e.g. next_cursor is next page of results."),
   
   include_action_items: z.boolean()
     .optional()

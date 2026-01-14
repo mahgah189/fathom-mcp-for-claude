@@ -11,6 +11,10 @@ export const FATHOM_API_CONFIG = {
   "X-Api-Key": FATHOM_API_KEY
 };
 
+// Response limits.
+export const CHARACTER_LIMIT = 25000;
+export const DEFAULT_PAGE_LIMIT = 20;
+
 // Valid response formats for MCP schemas.
 export enum ResponseFormat {
   MARKDOWN = "markdown",
