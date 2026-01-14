@@ -90,7 +90,6 @@ export const defaultErrorHandler: ErrorHandler = async ({
 // Handle GET requests.
 export const apiGet = async <T>(
   endpoint: string,
-  apiKey: string,
   onError: ErrorHandler = defaultErrorHandler,
   params?: Record<string, unknown>,
 ): Promise<T> => {
@@ -99,7 +98,7 @@ export const apiGet = async <T>(
   const response = await fetch(url, {
     method: "GET",
     headers: {
-      "X-Api-Key": apiKey
+      "X-Api-Key": getApiKey()
     },
   });
 
@@ -113,7 +112,6 @@ export const apiGet = async <T>(
 // Handle POST requests. Only used for Fathom webhooks. 
 export const apiPost = async <T>(
   endpoint: string,
-  apiKey: string,
   onError: ErrorHandler = defaultErrorHandler,
   params?: Record<string, unknown>,
 ): Promise<T> => {
@@ -146,7 +144,7 @@ export const apiPost = async <T>(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-Api-Key": apiKey
+      "X-Api-Key": getApiKey()
     },
     body
   });
@@ -169,7 +167,7 @@ export const apiDelete = async (
   const response = await fetch(url, {
     method: "DELETE",
     headers: {
-      "X-Api-Key": apiKey
+      "X-Api-Key": getApiKey()
     }
   });
 

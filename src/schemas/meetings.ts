@@ -12,7 +12,7 @@ export const ListMeetingsInputSchema = z.object({
     .optional()
     .describe("Returns meetings where any of the given company domains appear in the meeting. Example: ['acme.com', 'client.com']"),
 
-  calendar_invitees_domain_types: z.nativeEnum(CalendarInviteesDomainType)
+  calendar_invitees_domains_type: z.nativeEnum(CalendarInviteesDomainType)
     .optional()
     .default(CalendarInviteesDomainType.ALL)
     .describe("Filter by whether calendar invitee list includes external email domains. Available options: all, only_internal, one_or_more_external "),
