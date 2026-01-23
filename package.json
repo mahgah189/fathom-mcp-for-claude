@@ -1,5 +1,5 @@
 {
-  "name": "claude-fathom-mcp",
+  "name": "fathom-mcp",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
