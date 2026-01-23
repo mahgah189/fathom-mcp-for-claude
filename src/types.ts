@@ -111,5 +111,67 @@ export interface Deal {
   record_url: string;
 };
 
+// Analytics types
+export interface MeetingStats {
+  [key: string]: unknown;
+  total_meetings: number;
+  duration_stats: DurationStats;
+  meetings_by_team: Record<string, number>;
+  internal_vs_external: {
+    internal: number;
+    external: number;
+  };
+}
+
+export interface SearchResult {
+  meeting: Meeting;
+  matches: {
+    in_title: boolean;
+    in_transcript: boolean;
+    in_summary: boolean;
+    context_snippets: string[];
+  };
+}
+
+export interface DurationStats {
+  [key: string]: unknown;
+  average_minutes: number;
+  min_minutes: number;
+  max_minutes: number;
+  total_minutes: number;
+}
+
+export interface ParticipantStats {
+  [key: string]: unknown;
+  top_participants: ParticipantInfo[];
+  domain_breakdown: Record<string, number>;
+  top_recorders: RecorderInfo[];
+}
+
+export interface RecorderInfo {
+  [key: string]: unknown;
+  name: string;
+  email: string;
+  recording_count: number;
+}
+
+export interface ParticipantInfo {
+  [key: string]: unknown;
+  name: string;
+  email: string;
+  meeting_count: number;
+}
+
+// Search result
+export interface SearchResult {
+  meeting: Meeting;
+  matches: {
+    in_title: boolean;
+    in_transcript: boolean;
+    in_summary: boolean;
+    context_snippets: string[];
+  };
+}
+
 // Export types for handling paginated responses from each endpoint.
 export interface MeetingsResponse extends PaginatedResponse<Meeting> {};
